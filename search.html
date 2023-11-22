@@ -76,6 +76,7 @@
                 <div class="row">
                     <div class="col text-center">
                         <h1>快速查詢</h1>
+                        <div id="district-checkboxes">
                         <label class="checkbox-label">
                             <input type="checkbox" name="中區" id="中區" />中區
                         </label>
@@ -164,8 +165,93 @@
                             <input type="checkbox" name="大安區" id="大安區" />大安區
                         </label>
                     </div>
+                    </div>
+                    <table id="stations-table" border="1">
+                        <thead>
+                          <tr>
+                            <th>站點名稱</th>
+                            <th>可借車輛</th>
+                            <th>可還車輛</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Station information will be displayed here -->
+                        </tbody>
+                      </table>
                 </div>
             </div>
+            <script>
+                // 這裡假設您的 JSON 文件位於伺服器上的 '/path/to/your/data.json'
+                var jsonFilePath = 'ubikedata.json';
+
+                fetch(jsonFilePath)
+                    .then(function (response) {
+                        // 確保文件成功加載
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok.');
+                        }
+                        return response.json(); // 解析 JSON 數據
+                    })
+                    .then(function (data) {
+                        // 現在 data 變量包含了解析後的 JSON 對象
+                        // 您可以在這裡編寫處理數據的代碼
+                        createCheckboxes(data);
+                    })
+                    .catch(function (error) {
+                        // 如果有錯誤，比如文件找不到，或者不是有效的 JSON
+                        console.error('Error fetching and parsing data:', error);
+                    });
+
+                function createCheckboxes(data) {
+                    var checkboxesContainer = document.getElementById('district-checkboxes');
+                    var districtStations = {};
+
+                    // 從 JSON 數據中提取區域和站點信息
+                    data.retVal.forEach(function (station) {
+                        var district = station.sarea;
+                        if (!districtStations[district]) {
+                            districtStations[district] = [];
+                        }
+                        districtStations[district].push({
+                            name: station.sna,
+                            availableBikes: station.sbi,
+                            emptySlots: station.bemp
+                        });
+                    });
+
+                    // 為每個區域創建一個 checkbox
+                    Object.keys(districtStations).forEach(function (district) {
+                        var checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.id = district;
+                        checkbox.value = district;
+
+                        var label = document.createElement('label');
+                        label.htmlFor = district;
+                        label.textContent = district;
+
+                        checkboxesContainer.appendChild(checkbox);
+                        checkboxesContainer.appendChild(label);
+
+                        checkbox.addEventListener('change', function (event) {
+                            displayStationsInfo(event.target.value, districtStations[district]);
+                        });
+                    });
+                }
+
+                function displayStationsInfo(district, stations) {
+                    var tableBody = document.querySelector('#stations-table tbody');
+                    tableBody.innerHTML = ''; // 清空表格
+
+                    stations.forEach(function(station) {
+                        var row = document.createElement('tr');
+                        row.innerHTML = `<td>${station.name}</td><td>${station.availableBikes}</td><td>${station.emptySlots}</td>`;
+                        tableBody.appendChild(row);
+                    });
+                    }
+
+                // 您可以在 createCheckboxes 函數中實現先前描述的功能
+            </script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
                 crossorigin="anonymous"></script>
