@@ -5,15 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* 让html和body的高度等于视口高度 */
+            display: flex;
+            flex-direction: column; /* 设置flex方向为垂直 */
+        }
+        .content {
+            flex: 1; /* 让内容区域占用所有剩余空间 */
+            overflow: auto; /* 如果内容超出，则显示滚动条 */
+            background-color: #F6F7F8;
+        }
+        footer{
+            height: 5vh;
+            text-align: center;
+            background-color:#262f3c;
+        }
+        
+    </style>
 </head>
 <body>
-    <header style="background-color: w;"><header>
+    <header style="background-color: white;">
         <div class="container">
             <div class="row">
                 <h1 style="padding: 20px;">Ubike 查詢</h1>
             </div>
         </div>
         <hr style="margin-top: 0;">
+    
     <div class="container">
         <div class="row">
             <ul style="display: flex;">
@@ -25,19 +46,20 @@
             </ul>
         </div>
     </div>
+    </header>
     <hr style="margin-top: 0; margin-bottom: 0;">
-    <div class="coantainer">
+    <div class="coantainer content">
         <div class="row justify-content-center ">
-            <div class="col-7" style="margin-top: 50px;">
+            <div class="col-7" style="margin-top: 100px;">
                 <div  class="mx-auto" id="map" style="height:500px; border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);"></div>
             </div>
-            <div class="col-2">
+            <div class="col-2" style="margin-top: 40px;">
                 <iframe
                         src="https://www.chatbase.co/chatbot-iframe/O2vt1RgkbY8P6aHvQhyTl"
                         width="100%"
                         style="height: 100%; min-height: 700px"
                         frameborder="0"
-                        ></iframe>
+                ></iframe>
             </div>
         </div>
     </div>
@@ -99,4 +121,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpuQrvjus_rg0gCogcUgiyU1m2BZNDm6E&callback=initMap"></script>
 
 </body>
+<footer>
+    <p style="color: white;">@Mark'<s></s></p>
+</footer> 
 </html>
