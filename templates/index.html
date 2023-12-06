@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
-            height: 100vh; /* 让html和body的高度等于视口高度 */
+            height: 100vh;
+            /* 让html和body的高度等于视口高度 */
             display: flex;
-            flex-direction: column; /* 设置flex方向为垂直 */
+            flex-direction: column;
+            /* 设置flex方向为垂直 */
         }
+
         .content {
-            flex: 1; /* 让内容区域占用所有剩余空间 */
-            overflow: auto; /* 如果内容超出，则显示滚动条 */
+            flex: 1;
+            /* 让内容区域占用所有剩余空间 */
+            overflow: auto;
+            /* 如果内容超出，则显示滚动条 */
             background-color: #F6F7F8;
         }
-        footer{
+
+        footer {
             height: 5vh;
             text-align: center;
-            background-color:#262f3c;
+            background-color: #262f3c;
         }
-        
     </style>
 </head>
+
 <body>
     <header style="background-color: white;">
         <div class="container">
@@ -34,94 +43,108 @@
             </div>
         </div>
         <hr style="margin-top: 0;">
-    
-    <div class="container">
-        <div class="row">
-            <ul style="display: flex;">
-                <a href="index.html">回到主頁</a>
-                <a style="margin-left: 20px;" href="search.html">快速查詢</a>
-                <a style="margin-left: 20px;" href="https://activity.youbike.com.tw/">活動專區</a>
-                <a style="margin-left: 20px;" href="rate.html">計費方式</a>
-                <a style="margin-left: 20px;" href="self.html">關於我們</a>
-            </ul>
+
+        <div class="container">
+            <div class="row">
+                <ul style="display: flex;">
+                    <a href="/">回到主頁</a>
+                    <a style="margin-left: 20px;" href="/search">快速查詢</a>
+                    <a style="margin-left: 20px;" href="https://activity.youbike.com.tw/">活動專區</a>
+                    <a style="margin-left: 20px;" href="/rate">計費方式</a>
+                    <a style="margin-left: 20px;" href="/self">關於我們</a>
+                </ul>
+            </div>
         </div>
-    </div>
     </header>
     <hr style="margin-top: 0; margin-bottom: 0;">
     <div class="coantainer content">
         <div class="row justify-content-center ">
             <div class="col-7" style="margin-top: 100px;">
-                <div  class="mx-auto" id="map" style="height:500px; border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);"></div>
+                <div class="mx-auto" id="map"
+                    style="height:500px; border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);"></div>
             </div>
             <div class="col-2" style="margin-top: 40px;">
-                <iframe
-                        src="https://www.chatbase.co/chatbot-iframe/O2vt1RgkbY8P6aHvQhyTl"
-                        width="100%"
-                        style="height: 100%; min-height: 700px"
-                        frameborder="0"
-                ></iframe>
+                <iframe src="https://www.chatbase.co/chatbot-iframe/O2vt1RgkbY8P6aHvQhyTl" width="100%"
+                    style="height: 100%; min-height: 700px" frameborder="0"></iframe>
             </div>
         </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/L8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>    <script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/L8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
+        crossorigin="anonymous"></script>
+    <script>
         let map;
         let currentPosition;
 
         function initMap() {
-            map=new google.maps.Map(document.getElementById('map'),{
-                center: {lat: 23.553118,lng:121.0211024},
-                zoom:9,
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 23.553118, lng: 121.0211024 },
+                zoom: 9,
             });
-            navigator.geolocation.getCurrentPosition(function(position){
-                currentPosition={
+            navigator.geolocation.getCurrentPosition(function (position) {
+                currentPosition = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                 };
                 map.setCenter(currentPosition);
                 map.setZoom(16);
             });
-            fetch('ubikedata.json')
-                .then(response => response.json())
-                .then(data => {
-                    // console.log(data); 
-                    data.retVal.forEach(station => {
-                    let marker = new google.maps.Marker({
-                        position: {
-                            lat: parseFloat(station.lat),
-                            lng: parseFloat(station.lng)
-                        },
-                        map: map,
-                        title: station.sna,
-                        icon: {
-                            url: 'bike (2).png',
-                            scaledSize: new google.maps.Size(30, 30) // 設置圖標的大小
-                        }
-                    });
-                    marker.addListener('click', function() {
-                        // 創建信息窗口
-                        let infowindow = new google.maps.InfoWindow({
-                            content:
-                            '<div><b>租賃站點查詢:</b> ' + station.sna + '</div>' +
-                            '<div><b>站點位置:</b> ' + station.ar + '</div>' +
-                            '<div><b>可借車輛:</b> ' + station.sbi + '</div>' +
-                            '<div><b>可停空位:</b> ' + station.tot + '</div>'
+
+            function updateMapData() {
+                fetch('/data')
+                    .then(response => response.json())
+                    .then(data => {
+                        data.retVal.forEach(station => {
+                            let marker = new google.maps.Marker({
+                                position: {
+                                    lat: parseFloat(station.lat),
+                                    lng: parseFloat(station.lng)
+                                },
+                                map: map,
+                                title: station.sna,
+                                icon: {
+                                    url: '/immage/bike.png', // 更新為正確的路徑
+                                    scaledSize: new google.maps.Size(30, 30) // 設置圖標的大小
+                                }
+                            });
+                            marker.addListener('click', function () {
+                                // 創建信息窗口
+                                let infowindow = new google.maps.InfoWindow({
+                                    content:
+                                        '<div><b>租賃站點查詢:</b> ' + station.sna + '</div>' +
+                                        '<div><b>站點位置:</b> ' + station.ar + '</div>' +
+                                        '<div><b>可借車輛:</b> ' + station.sbi + '</div>' +
+                                        '<div><b>可停空位:</b> ' + station.tot + '</div>'
+                                });
+                                // 在標記上打開信息窗口
+                                infowindow.open(map, marker);
+                            });
                         });
-                        // 在標記上打開信息窗口
-                        infowindow.open(map, marker);
-                    });
-                });
-            })
-            .catch(error => console.error('Error loading JSON:', error));
+                    })
+                    .catch(error => console.error('Error loading JSON:', error));
+            }
+
+            updateMapData();
+            setInterval(updateMapData, 60000);
         }
-        
+
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpuQrvjus_rg0gCogcUgiyU1m2BZNDm6E&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpuQrvjus_rg0gCogcUgiyU1m2BZNDm6E&callback=initMap"></script>
 
 </body>
 <footer>
     <p style="color: white;">@Mark'<s></s></p>
-</footer> 
+</footer>
+
 </html>
