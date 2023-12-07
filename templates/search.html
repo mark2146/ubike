@@ -12,6 +12,7 @@
             width: 100%;
             border-collapse: collapse;
         }
+
         /* 給 '請選擇區域' 的單元格增加特定的樣式 */
         .select-district-prompt td {
             padding: 300px;
@@ -27,12 +28,14 @@
             background-color: white;
             /* 可選，如果您想要有背景色 */
         }
+
         th,
         td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
         }
+
         th {
             background-color: #ffcc00;
         }
@@ -74,18 +77,21 @@
             margin-bottom: 10px;
             /* 為了對齊每一組的底部 */
         }
+
         .checkbox-group input[type="checkbox"] {
             margin-right: 5px;
             /* 為複選框和標籤之間添加一些空間 */
             cursor: pointer;
             /* 當鼠標懸停時顯示指針 */
         }
+
         .checkbox-group label {
             cursor: pointer;
             /* 當鼠標懸停時顯示指針 */
             user-select: none;
             /* 防止選中標籤文本 */
         }
+
         /* 自定義複選框的樣式 */
         .checkbox-group input[type="checkbox"] {
             appearance: none;
@@ -101,6 +107,7 @@
             position: relative;
             /* 定位，便於後續添加對勾圖標 */
         }
+
         /* 當複選框被勾選時的樣式 */
         .checkbox-group input[type="checkbox"]:checked {
             background-color: #4CAF50;
@@ -108,6 +115,7 @@
             border-color: #4CAF50;
             /* 被勾選時的邊框顏色 */
         }
+
         /* 為被勾選的複選框添加對勾圖標 */
         .checkbox-group input[type="checkbox"]:checked::after {
             content: '✓';
@@ -120,6 +128,7 @@
             /* 對勾的大小 */
             line-height: 1;
         }
+
         /* 使標籤在點擊時也能切換複選框 */
         .checkbox-group label {
             flex-grow: 1;
@@ -127,11 +136,13 @@
             padding-left: 5px;
             /* 給標籤文本一些空間 */
         }
+
         /* 增加標籤的點擊範圍 */
         .checkbox-group label {
             display: block;
             /* 使標籤佔滿整個容器寬度 */
         }
+
         footer {
             height: 5vh;
             text-align: center;
@@ -162,10 +173,12 @@
     </header>
     <main style="background-color: #F6F7F8;">
         <hr style="margin-top: 0; margin-bottom: 0;">
-        <div class="container py-5">
+        <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h1>快速查詢</h1>
+                    <h1
+                        style="margin: 15px 0 15px 0; background-color: white; border-radius: 20px; display: inline-block; padding: 10px 10px 10px 10px;">
+                        快速查詢</h1>
                     <div id="district-checkboxes" style="background-color: white; padding: 20px; border-radius: 20px;">
                         <div>
                             <label class="checkbox-label">
@@ -277,6 +290,13 @@
     <script>
         var districtStations = {};
         document.addEventListener('DOMContentLoaded', function () {
+            // 首次載入立即獲取數據並更新 UI
+            fetchDataAndUpdateUI();
+            // 然後每三分鐘自動更新數據
+            setInterval(fetchDataAndUpdateUI, 180000); // 每三分鐘（180000 毫秒）調用一次 fetchDataAndUpdateUI 函數
+        });
+
+        function fetchDataAndUpdateUI() {
             fetch('/data')
                 .then(function (response) {
                     if (!response.ok) {
@@ -286,13 +306,12 @@
                 })
                 .then(function (data) {
                     createCheckboxes(data);
-                    displayStationsInfo(); // 在數據加載後執行一次，顯示初始提示
+                    displayStationsInfo(); // 更新 UI
                 })
                 .catch(function (error) {
                     console.error('Error fetching and parsing data:', error);
                 });
-        });
-
+        }
         function createCheckboxes(data) {
             var checkboxesContainer = document.getElementById('district-checkboxes');
             checkboxesContainer.innerHTML = ''; // 清空現有的復選框

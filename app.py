@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask import jsonify
-
 import requests
 
 app = Flask(__name__, static_folder='immage')
@@ -29,3 +28,4 @@ def get_data():
 
 if __name__ == '__main__':
     app.run(debug=True)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
