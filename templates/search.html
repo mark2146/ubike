@@ -13,20 +13,13 @@
             border-collapse: collapse;
         }
 
-        /* 給 '請選擇區域' 的單元格增加特定的樣式 */
         .select-district-prompt td {
             padding: 300px;
-            /* 增加內邊距來讓單元格看起來更大 */
             font-size: 20px;
-            /* 增加字體大小 */
             font-weight: bold;
-            /* 加粗字體 */
             text-align: center;
-            /* 文字居中對齊 */
             vertical-align: middle;
-            /* 垂直居中內容 */
             background-color: white;
-            /* 可選，如果您想要有背景色 */
         }
 
         th,
@@ -65,7 +58,6 @@
             justify-content: flex-start;
             align-items: center;
             gap: 10px;
-            /* 確保複選框之間有間隙 */
         }
 
         .checkbox-group {
@@ -73,37 +65,26 @@
             align-items: center;
             justify-content: center;
             width: calc(20% - 10px);
-            /* 減去間隙確保五個一組 */
             margin-bottom: 10px;
-            /* 為了對齊每一組的底部 */
         }
 
         .checkbox-group input[type="checkbox"] {
             margin-right: 5px;
-            /* 為複選框和標籤之間添加一些空間 */
             cursor: pointer;
-            /* 當鼠標懸停時顯示指針 */
         }
 
         .checkbox-group label {
             cursor: pointer;
-            /* 當鼠標懸停時顯示指針 */
             user-select: none;
-            /* 防止選中標籤文本 */
         }
 
         /* 自定義複選框的樣式 */
         .checkbox-group input[type="checkbox"] {
             appearance: none;
-            /* 移除原生樣式 */
             background-color: #f2f2f2;
-            /* 背景顏色 */
             border: 2px solid #d1d1d1;
-            /* 邊框顏色 */
             padding: 10px;
-            /* 複選框大小 */
             border-radius: 4px;
-            /* 邊框圓角 */
             position: relative;
             /* 定位，便於後續添加對勾圖標 */
         }
@@ -111,9 +92,7 @@
         /* 當複選框被勾選時的樣式 */
         .checkbox-group input[type="checkbox"]:checked {
             background-color: #4CAF50;
-            /* 被勾選時的背景顏色 */
             border-color: #4CAF50;
-            /* 被勾選時的邊框顏色 */
         }
 
         /* 為被勾選的複選框添加對勾圖標 */
@@ -129,18 +108,13 @@
             line-height: 1;
         }
 
-        /* 使標籤在點擊時也能切換複選框 */
         .checkbox-group label {
             flex-grow: 1;
-            /* 使標籤佔滿剩餘空間 */
             padding-left: 5px;
-            /* 給標籤文本一些空間 */
         }
 
-        /* 增加標籤的點擊範圍 */
         .checkbox-group label {
             display: block;
-            /* 使標籤佔滿整個容器寬度 */
         }
 
         footer {
@@ -291,7 +265,7 @@
             // 首次載入立即獲取數據並更新 UI
             fetchDataAndUpdateUI();
             // 然後每三分鐘自動更新數據
-            setInterval(fetchDataAndUpdateUI, 180000); // 每三分鐘（180000 毫秒）調用一次 fetchDataAndUpdateUI 函數
+            setInterval(fetchDataAndUpdateUI, 180000); // 每三分鐘調用一次
         });
 
         function fetchDataAndUpdateUI() {
@@ -358,7 +332,7 @@
             var tableBody = document.querySelector('#stations-table tbody');
             tableBody.innerHTML = ''; // 清空表格
 
-            var anyChecked = false; // 跟踪是否有任何復選框被勾選
+            var anyChecked = false; 
 
             Object.keys(districtStations).forEach(function (district) {
                 var checkbox = document.getElementById(district);
@@ -374,7 +348,7 @@
 
             if (!anyChecked) {
                 var row = document.createElement('tr');
-                row.classList.add('select-district-prompt'); // 添加剛剛建立的 CSS 類別
+                row.classList.add('select-district-prompt'); 
                 row.innerHTML = '<td colspan="4">請選擇區域</td>';
                 tableBody.appendChild(row);
             }

@@ -110,7 +110,7 @@
                                 title: station.sna,
                                 icon: {
                                     url: '/immage/bike.png', 
-                                    scaledSize: new google.maps.Size(30, 30) // 設置圖標的大小
+                                    scaledSize: new google.maps.Size(30, 30) 
                                 }
                             });
                             marker.addListener('click', function () {
@@ -121,7 +121,6 @@
                                         '<div><b>可借車輛:</b> ' + station.sbi + '</div>' +
                                         '<div><b>可停空位:</b> ' + station.tot + '</div>'
                                 });
-                                // 在標記上打開信息窗口
                                 infowindow.open(map, marker);
                             });
                         });
