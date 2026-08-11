@@ -114,13 +114,20 @@
                                 }
                             });
                             marker.addListener('click', function () {
-                                let infowindow = new google.maps.InfoWindow({
-                                    content:
-                                        '<div><b>租賃站點查詢:</b> ' + station.sna + '</div>' +
-                                        '<div><b>站點位置:</b> ' + station.ar + '</div>' +
-                                        '<div><b>可借車輛:</b> ' + station.sbi + '</div>' +
-                                        '<div><b>可停空位:</b> ' + station.tot + '</div>'
+                                const content = document.createElement('div');
+                                [
+                                    ['租賃站點查詢', station.sna],
+                                    ['站點位置', station.ar],
+                                    ['可借車輛', station.sbi],
+                                    ['可停空位', station.tot],
+                                ].forEach(([label, value]) => {
+                                    const row = document.createElement('div');
+                                    const title = document.createElement('b');
+                                    title.textContent = `${label}: `;
+                                    row.append(title, document.createTextNode(String(value ?? '')));
+                                    content.appendChild(row);
                                 });
+                                let infowindow = new google.maps.InfoWindow({ content });
                                 infowindow.open(map, marker);
                             });
                         });
@@ -133,8 +140,12 @@
         }
 
     </script>
+    {% if google_maps_api_key %}
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpuQrvjus_rg0gCogcUgiyU1m2BZNDm6E&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key|urlencode }}&callback=initMap"></script>
+    {% else %}
+    <p>Map configuration is unavailable. Set GOOGLE_MAPS_API_KEY on the server.</p>
+    {% endif %}
 
 </body>
 <footer>
